@@ -1,6 +1,6 @@
 - name: frontend setup
   hosts: all
-  becomes: yes
+  become: yes
   tasks:
     - name: Installing nginx
       ansible.builtin.dnf:
@@ -18,8 +18,8 @@
         state: absent 
         
     - namd: Download frontend code
-        ansible.builtin.get.url:
-          url: https://expense-artifacts.s3.amazonaws.com/frontend.zip
-          dest: /tmp/frontend.zip
+      ansible.builtin.get.url:
+        url: https://expense-artifacts.s3.amazonaws.com/frontend.zip
+        dest: /tmp/frontend.zip
  #   - name: Extracting frontend code
  #   - name: Starting nginx server
