@@ -15,7 +15,12 @@
     - name: Removing old nginx content
       ansible.builtin.file:
         path: /usr/share/nginx/html
-        state: absent 
+        state: absent
+        
+    - name: creating  nginx content directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory 
         
     - name: Download frontend code and extractit 
       ansible.builtin.unarchive:
