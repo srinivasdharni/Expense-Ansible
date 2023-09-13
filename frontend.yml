@@ -4,7 +4,7 @@
   tasks:
     - name: Installing nginx
       ansible.builtin.dnf:
-        name: httpd
+        name: nginx
         state: present  
         
     - name: Placing expense config file in nginx
