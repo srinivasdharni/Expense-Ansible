@@ -1,9 +1,19 @@
+- name: Verify NodeJS
+  ansible.builtin.shell: type npm
+  register: npm
+  
+#- name: Read npm
+ # ansible.buildin.debug:
+  #  msg: "{{npm}}"
+  
 - name: Install NodeJS
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  when: npm.rc != 0
   
 - name: Install NodeJS
   ansible.builtin.dnf:
     name: nodejs
+  when: npm.rc != 0
         
 - name: Copy Backend Serivice File
   ansible.builtin.copy:
